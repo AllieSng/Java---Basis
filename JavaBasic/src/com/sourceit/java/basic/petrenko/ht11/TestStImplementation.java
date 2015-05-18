@@ -46,7 +46,9 @@ public class TestStImplementation extends TextStatistics {
 		String[] mas = this.getText().split("");
 		for (String el : mas) {
 			if (!hm.containsKey(el)) {
-				hm.put(el, 1);
+				if(!el.isEmpty() & el != " "){
+					hm.put(el, 1);
+				}		
 			} else {
 				hm.put(el, hm.get(el) + 1);
 			}
@@ -57,7 +59,7 @@ public class TestStImplementation extends TextStatistics {
 	@Override
 	public List<String> words() {
 		List<String> arrlist = new ArrayList<String>(Arrays.asList(this
-				.getText()));
+				.getText().split(" ")));
 		System.out.println("Text is:");
 		return arrlist;
 	}
