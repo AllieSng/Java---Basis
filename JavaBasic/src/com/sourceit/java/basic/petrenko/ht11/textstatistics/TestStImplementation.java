@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class TestStImplementation extends TextStatistics {
-//	public Map<String, Integer> hm;
+	public Map<String, Integer> hm;
 
 	public TestStImplementation(String text) {
 		super(text);
@@ -35,7 +35,7 @@ public class TestStImplementation extends TextStatistics {
 
 	@Override
 	public Map<String, Integer> getChars() {
-		Map<String, Integer> hm = new HashMap<String, Integer>();
+		hm = new HashMap<String, Integer>();
 		String[] mas = this.getText().split("");
 		for (String el : mas) {
 			if (!hm.containsKey(el)) {
@@ -56,22 +56,7 @@ public class TestStImplementation extends TextStatistics {
 		return arrlist;
 	}
 
-//	public Map<String, Integer> mapCreation() {
-//		Map<String, Integer> hm = new HashMap<String, Integer>();
-//		String[] mas = this.getText().split("");
-//		for (String el : mas) {
-//			if (!hm.containsKey(el)) {
-//				hm.put(el, 1);
-//			} else {
-//				hm.put(el, hm.get(el) + 1);
-//			}
-//		}
-//		return hm;
-//	}
-
-	@Override
-	public int getMostPopularCharCount() {
-//		mapCreation();
+	public Map<String, Integer> mapCreation() {
 		Map<String, Integer> hm = new HashMap<String, Integer>();
 		String[] mas = this.getText().split("");
 		for (String el : mas) {
@@ -81,6 +66,12 @@ public class TestStImplementation extends TextStatistics {
 				hm.put(el, hm.get(el) + 1);
 			}
 		}
+		return hm;
+	}
+
+	@Override
+	public int getMostPopularCharCount() {
+		mapCreation();
 		Set<Map.Entry<String, Integer>> set = hm.entrySet();
 		Map.Entry<String, Integer> maxEntry = null;
 		for (Map.Entry<String, Integer> entry : set) {
@@ -94,15 +85,7 @@ public class TestStImplementation extends TextStatistics {
 
 	@Override
 	public int getLeastPopularCharCount() {
-		Map<String, Integer> hm = new HashMap<String, Integer>();
-		String[] mas = this.getText().split("");
-		for (String el : mas) {
-			if (!hm.containsKey(el)) {
-				hm.put(el, 1);
-			} else {
-				hm.put(el, hm.get(el) + 1);
-			}
-		}
+		mapCreation();
 		Set<Map.Entry<String, Integer>> set = hm.entrySet();
 		Map.Entry<String, Integer> minEntry = null;
 		for (Map.Entry<String, Integer> entry : set) {
